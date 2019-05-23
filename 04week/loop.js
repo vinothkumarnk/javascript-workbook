@@ -1,10 +1,10 @@
 //Use a do...while loop to console.log the numbers from 1 to 1000.
 
-// var i=1000;
-// do{
-//     console.log(i);
-//     i--;
-// }while(i>0);
+var i=1000;
+do{
+    console.log(i);
+    i--;
+}while(i>0);
 
 
 // Create an object (an array with keys and values) called person with the following data:
@@ -13,23 +13,23 @@
 // birthDate: "Jan 5, 1925"
 // gender: "female"
 
-// var person = [{
-//     firstName : 'Jane',
-//     lastName : 'Doe',
-//     birthDate : 'Jan 5, 1925',
-//     gender: 'female'
-//     }];
+var person = [{
+    firstName : 'Jane',
+    lastName : 'Doe',
+    birthDate : 'Jan 5, 1925',
+    gender: 'female'
+    }];
 
-  //  console.log(person);
+   console.log(person);
 
 
     // Use a for...in loop and if statement to console.log the value associated with the key birthDate if the birth year is an odd number.
-//    let x;
-//     for (x in person){
-//             var dt = new Date(person[x].birthDate);
-//             if(dt.getFullYear % 2 !=0)
-//                 console.log(person[x].birthDate);
-//     }
+   let x;
+    for (x in person){
+            var dt = new Date(person[x].birthDate);
+            if(dt.getFullYear % 2 !=0)
+                console.log(person[x].birthDate);
+    }
 
 
     // Create an arrayOfPersons that contains multiple objects. You can simply copy/paste the person object you made above multiple times. 
@@ -56,10 +56,10 @@
                 }];
 
                 // Use .map() to map over the arrayOfPersons and console.log() their information.
-                // console.log(arrayOfPersons.map(x => x.firstName +' ' + x.lastName + ' '+ x.birthDate + ' '+ x.gender));
+                console.log(arrayOfPersons.map(x => x.firstName +' ' + x.lastName + ' '+ x.birthDate + ' '+ x.gender));
 
                 // // Use .filter() to filter the persons array and console.log only males in the array.
-                // console.log(arrayOfPersons.filter(x => x.gender === 'Male'))
+                console.log(arrayOfPersons.filter(x => x.gender === 'Male'))
 
                 // Use .filter() to filter the persons array and console.log only people that were born before Jan 1, 1990.
                 console.log(arrayOfPersons.filter(x => new Date(x.birthDate) < new Date("Jan 1, 1990")))
