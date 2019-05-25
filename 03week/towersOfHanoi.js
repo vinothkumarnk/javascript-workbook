@@ -25,7 +25,28 @@ function movePiece() {
 }
 
 function isLegal() {
-  // Your code here
+  
+
+//rules for b
+if (stacks.b.pop!=null){
+  if((stacks.a.pop!=null && stacks.b.pop < stacks.a.pop) || (stacks.c.pop!=null && stacks.b.pop < stacks.c.pop))
+    return false;
+}
+
+//rules for c
+else if (stacks.c.pop!=null){
+  if((stacks.a.pop!=null && stacks.c.pop < stacks.a.pop) || (stacks.b.pop!=null && stacks.c.pop < stacks.b.pop))
+    return false;
+}
+
+//rules for a
+else if (stacks.a.pop!=null){
+  if((stacks.c.pop!=null && stacks.a.pop < stacks.c.pop) || (stacks.b.pop!=null && stacks.a.pop < stacks.b.pop))
+    return false;
+}
+
+else
+return true;
 
 }
 
