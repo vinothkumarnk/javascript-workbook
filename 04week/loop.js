@@ -17,7 +17,7 @@ var person = [{
     firstName : 'Jane',
     lastName : 'Doe',
     birthDate : 'Jan 5, 1925',
-    gender: 'female'
+    gender: 'Male'
     }];
 
    console.log(person);
@@ -63,3 +63,12 @@ var person = [{
 
                 // Use .filter() to filter the persons array and console.log only people that were born before Jan 1, 1990.
                 console.log(arrayOfPersons.filter(x => new Date(x.birthDate) < new Date("Jan 1, 1990")))
+
+
+
+                // Project 2: From scratch: .find() & .findIndex()
+                function isMale(person){
+                    return person.gender === 'Male';
+                }
+
+                console.log(person[person.findIndex(isMale)]);
