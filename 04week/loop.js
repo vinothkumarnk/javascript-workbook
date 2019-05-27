@@ -72,3 +72,4 @@ var person = [{
                 }
 
                 console.log(person[person.findIndex(isMale)]);
+                console.log(person.find(isMale).firstName);
