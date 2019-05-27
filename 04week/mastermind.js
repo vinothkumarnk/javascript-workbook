@@ -10,6 +10,7 @@ const rl = readline.createInterface({
 let board = [];
 let solution = '';
 let letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+var hint;
 
 function printBoard() {
   for (let i = 0; i < board.length; i++) {
@@ -28,13 +29,52 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function generateHint() {
-  // your code here
+function generateHint(guess) {
+  
+  let correctLetterLocations = 0,
+    correctLetters = 0;
+  let solutionArray = solution.split('');
+  let guessArray = guess.split('');
+  
+  //search letter same position
+    guessArray.forEach((item, index) => {
+    if (item === solutionArray[index]) {
+      correctLetterLocations += 1;
+      solutionArray[index] = '';
+      guessArray[index] = '';
+    }
+  })
+
+  //determine correct letters
+  guessArray.forEach((item, index) => {
+    if (item !== '') {
+      let findIndex = solutionArray.indexOf(item);
+      if (findIndex > -1) {
+        correctLetters += 1;
+        solutionArray[findIndex] = '';
+        guessArray[index] = '';
+      }
+    }
+  })
+  
+  return correctLetterLocations+'-'+correctLetters;
+ // return '${correctLetterLocations}-${correctLetters}';
 }
 
 function mastermind(guess) {
   solution = 'abcd'; // Comment this out to generate a random solution
-  // your code here
+
+  //checking whether guess and solution are equal
+  if (guess == solution) {
+    return 'You guessed it!';
+  }
+
+  if (guess!=solution){
+    hint = generateHint(guess);
+    
+    board.push(hint);
+    return;
+  }
 }
 
 
@@ -43,6 +83,7 @@ function getPrompt() {
     mastermind(guess);
     printBoard();
     getPrompt();
+  
   });
 }
 
