@@ -1,4 +1,4 @@
-'use strict';
+
 
 const assert = require('assert');
 const readline = require('readline');
@@ -19,23 +19,45 @@ function printStacks() {
   console.log("c: " + stacks.c);
 }
 
-function movePiece() {
-  // Your code here
+function movePiece(startStack, endStack) {
+  // Move the piece from one stack to another
+if (startStack == 'a' && endStack == 'b')
+stacks.b.push(stacks.a.pop);
+else if (startStack == 'a' && endStack == 'c')
+stacks.c.push(stacks.a.pop);
+else
+stacks.c.push(stacks.a.pop);
 
 }
 
 function isLegal() {
-  // Your code here
-
+  //Check whether the move is legal by checking the value from each stack. 
+if (stacks.b.length === 0 && stacks.c.length ===0)
+return true;
+else if (stacks.b.pop!=null && stacks.a.pop < stacks.b.pop)
+return true;
+else if(stacks.c.pop!=null && stacks.a.pop < stacks.c.pop)
+return true;
+else
+return false;
 }
 
 function checkForWin() {
-  // Your code here
-
+  // check whether the length of the stack is equal to 4 and then act acccordingly
+  if (stacks.c.length === 4 || stacks.b.length ===4){
+    return true;
+    }
+    else return false;
 }
 
 function towersOfHanoi(startStack, endStack) {
-  // Your code here
+  //Check for legal move, move the piece and check for win
+  if (isLegal(startStack, endStack)){
+    movePiece(startStack, endStack);
+    checkForWin();
+  } else {
+    return false;
+   }
 
 }
 
