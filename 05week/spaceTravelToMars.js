@@ -11,6 +11,44 @@ let jobTypes = {
 
 // Your code here
 
+// Build a class for CrewMember
+// Build a class for Ship
+// Make sure Crew Members can enter Ships
+// Make sure return a mission statement
+
+
+class CrewMember {
+  constructor(name, job, specialSkill){
+    this.name = name;
+    this.job = job;
+    this.specialSkill = specialSkill;
+    this.ship = null;
+  }
+
+  enterShip(mav){
+    this.ship = mav;
+    mav.crew.push(this);
+}
+}
+
+
+class Ship {
+  constructor(name, type, ability){
+    this.name = name;
+    this.type = type;
+    this.ability = ability;
+    this.crew = [];
+  }
+  missionStatement(){
+   if (this.crew.length == 0 && CrewMember.ship == null)
+   return "Can't perform a mission yet."
+   return this.ability;
+}
+}
+
+
+
+
 //tests
 if (typeof describe === 'function'){
   describe('CrewMember', function(){
@@ -44,8 +82,12 @@ if (typeof describe === 'function'){
     it('can return a mission statement correctly', function(){
       let mav = new Ship('Mars Ascent Vehicle', 'MAV', 'Ascend into low orbit');
       let crewMember1 = new CrewMember('Rick Martinez', 'pilot', 'chemistry');
+
+      
       let hermes = new Ship('Hermes', 'Main Ship', 'Interplanetary Space Travel');
       let crewMember2 = new CrewMember('Commander Lewis', 'commander', 'geology');
+      
+      
       assert.equal(mav.missionStatement(), "Can't perform a mission yet.");
       assert.equal(hermes.missionStatement(), "Can't perform a mission yet.");
 
