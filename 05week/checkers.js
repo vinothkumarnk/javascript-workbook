@@ -8,14 +8,63 @@ const rl = readline.createInterface({
 });
 
 
-function Checker() {
+function Checker(color) {
   // Your code here
+
+  if (color == 'white')
+    this.symbol = String.fromCharCode(0x125CB);
+  else
+    this.symbol = String.fromCharCode(0x125CF);
+
 }
 
 class Board {
+
   constructor() {
-    this.grid = []
+    this.grid = [];
+    this.checkers = [];
+
+    this.selectChecker = function(row, column){
+      return this.grid[row][column];
+    }
+
+
+    this.createCheckers = function () {
+
+      const white = new Checker('white');
+      const black = new Checker('black');
+
+      for (let row = 0; row < 8; row++) {
+        for (let column = 0; column < 8; column++) {
+          //for white
+          //row even
+          if (row < 3 && row % 2 == 0 && column % 2 !== 0) {
+            this.checkers.push(white);
+            this.grid[row][column] = white;
+          } 
+          //row odd
+          if (row < 3 && row % 2 !== 0 && column % 2 == 0) {
+            this.checkers.push(white);
+            this.grid[row][column] = white;
+          } 
+          
+          //for black
+          //row even
+          if (row > 4 && row % 2!== 0 && column % 2== 0) {
+            this.checkers.push(black);
+            this.grid[row][column] = black;
+          } 
+          //row odd
+          if (row > 4 && row % 2== 0 && column % 2!== 0) {
+            this.checkers.push(black);
+            this.grid[row][column] = black;
+          } 
+        }
+      }
+    }
   }
+
+
   // method that creates an 8x8 array, filled with null values
   createGrid() {
     // loop to create the 8 rows
@@ -27,6 +76,8 @@ class Board {
       }
     }
   }
+
+
   viewGrid() {
     // add our column numbers
     let string = "  0 1 2 3 4 5 6 7\n";
@@ -53,14 +104,23 @@ class Board {
   }
 
   // Your code here
+
+
+
+
 }
 
 class Game {
   constructor() {
     this.board = new Board;
+    this.moveChecker = function(start, end){
+        //start = start/10, start%100 - this is to capture row and column
+      var checker = selectChecker();
+    }
   }
   start() {
     this.board.createGrid();
+    this.board.createCheckers();
   }
 }
 
