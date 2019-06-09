@@ -7,13 +7,45 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
+  
+  // This function takes in string as a parameter and calls another function named vowel. If the vowel is present as 
+  //the first character in the string, the function would return "yay" else it will move that character to the last.
 
-function pigLatin(word) {
+  function pigLatin(word){
+    var string = word.toLowerCase().trim();
+    if(vowel(string.charAt(0)))
+      return string+"yay";
+    else
+     return move(string);
+    }
 
-  // Your code here
 
+//This function returns true or false if the character passed is a vowel or not respectively.
+function vowel(word)
+{
+  if((word=="a")||(word=="e")||(word=="i")||(word=="o")||(word=="u"))
+    return true;
+    else
+    return false;
+  
 }
 
+//This function appends "ay" at the last of the moved characters. For example: If the text is "latin", it will return "atinlay".
+function move(text){
+  var str='';
+  var str1='';
+  var i =0;
+    while(!vowel(text.charAt(i)) && i<=text.length){
+      str = str + text.charAt(i);
+      i++;
+    }
+   // return str+"ay";
+    while(i<=(text.length-str.length)+1){
+      str1=str1+text.charAt(i);
+      i++;
+    }
+    return str1+str+"ay";
+  }
 
 function getPrompt() {
   rl.question('word ', (answer) => {
